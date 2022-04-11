@@ -298,6 +298,11 @@ const mouseMoveEvent = (evt) => {
       svgCanvas.selectorManager.requestSelector(selected).resize()
       svgCanvas.call('transition', selectedElements)
 
+      const cursor = getElement('text_cursor')
+      if (selectedElements[0]?.textContent && cursor && cursor.getAttribute('visibility') === 'visible') {
+        svgCanvas.textActions.init()
+      }
+      
       break
     }
     case 'zoom': {
